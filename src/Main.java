@@ -43,6 +43,6 @@ public class Main {public class Cpusystem {
 }
 
     public static void main(String[] args) {
-        System.out.println("Hello, CPU!");
+        System.out.println("CPU START!");
     }
 }
