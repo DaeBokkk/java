@@ -6,7 +6,7 @@ public class StorageDevice {
 
     private String[] programNames = new String[100];
     private int[] programSizes = new int[100];
-    private int count = 0;
+    private int downloadCount = 0;
 
     public StorageDevice(String name, int totalGB, String type) {
         this.name = name;
@@ -26,15 +26,15 @@ public class StorageDevice {
             return;
         }
 
-        programNames[count] = programName;
-        programSizes[count] = programSize;
+        programNames[downloadCount] = programName;
+        programSizes[downloadCount] = programSize;
         usedGB += programSize;
-        count++;
+        downloadCount++;
         System.out.println(programName + " 설치 완료");
     }
 
     public void uninstallProgram(String programName) { // 프로그램 삭제 메서드
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < downloadCount; i++) {
             if (programName.equals(programNames[i])) {
                 int size = programSizes[i];
                 usedGB -= size;
@@ -45,7 +45,7 @@ public class StorageDevice {
                 }
                 programSizes[size] = 0;
                 programNames[size] = null;
-                count--;
+                downloadCount--;
                 System.out.println("삭제 완료");
                 return;
             }
@@ -58,7 +58,7 @@ public class StorageDevice {
     }
 
     private boolean isProgramInstalled(String programName) { // 설치가 되있으면 true 안되있으면 false
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < downloadCount; i++) {
             if(programName.equals(programNames[i])) {
                 return true;
             }
