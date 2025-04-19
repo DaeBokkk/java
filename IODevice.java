@@ -55,7 +55,6 @@ public class IODevice {
         return devices.contains(device);
     }
 
-    // 장치 목록 저장
     private void saveDevices() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(SAVE_FILE))) {
             for (String device : devices) {
@@ -66,7 +65,6 @@ public class IODevice {
         }
     }
 
-    // 장치 목록 불러오기
     private void loadDevices() {
         File file = new File(SAVE_FILE);
         if (!file.exists()) return;
@@ -81,29 +79,5 @@ public class IODevice {
         } catch (IOException e) {
             System.out.println("장치 불러오기 실패: " + e.getMessage());
         }
-    }
-
-    // 메인 함수
-    public static void main(String[] args) {
-        IODevice io = new IODevice();
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("입출력 장치 추가 (exit 입력 시 종료)");
-
-        while (true) {
-            System.out.print("추가할 장치 이름 입력: ");
-            String input = scanner.nextLine().trim();
-
-            if (input.equalsIgnoreCase("exit")) {
-                break;
-            }
-
-            io.addDevice(input);
-        }
-
-        System.out.println();
-        io.displayInfo();
-
-        scanner.close();
     }
 }
