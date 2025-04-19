@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class IODevice {
     private List<String> devices;
@@ -8,7 +9,6 @@ public class IODevice {
         devices = new ArrayList<>();
     }
 
-    // 장치 추가
     public void addDevice(String device) {
         if (!devices.contains(device)) {
             devices.add(device);
@@ -18,7 +18,6 @@ public class IODevice {
         }
     }
 
-    // 장치 제거
     public void removeDevice(String device) {
         if (devices.remove(device)) {
             System.out.println("장치 제거됨: " + device);
@@ -27,7 +26,6 @@ public class IODevice {
         }
     }
 
-    // 장치 목록 출력
     public void displayInfo() {
         System.out.println("현재 입출력 장치 목록:");
         if (devices.isEmpty()) {
@@ -39,19 +37,40 @@ public class IODevice {
         }
     }
 
-    // 입력 시뮬레이션
     public String receiveInput(String input) {
         System.out.println("입력 받음: " + input);
         return input;
     }
 
-    // 출력 시뮬레이션
     public void displayOutput(String output) {
         System.out.println("출력됨: " + output);
     }
 
-    // 장치 존재 여부 확인
     public boolean hasDevice(String device) {
         return devices.contains(device);
+    }
+
+    // 메인 함수 (사용자 입력으로 장치 추가)
+    public static void main(String[] args) {
+        IODevice io = new IODevice();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("입출력 장치 추가 (exit 입력 시 종료)");
+
+        while (true) {
+            System.out.print("추가할 장치 이름 입력: ");
+            String input = scanner.nextLine().trim();
+
+            if (input.equalsIgnoreCase("exit")) {
+                break;
+            }
+
+            io.addDevice(input);
+        }
+
+        System.out.println();
+        io.displayInfo();
+
+        scanner.close();
     }
 }
