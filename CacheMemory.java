@@ -2,7 +2,7 @@ public class CacheMemory {
     int size;
     int[] addresses;
     byte[] values;
-    int nextIndext = 0;
+    int nextIndex = 0;
 
     public CacheMemory(int size) {
         this.size = size;
@@ -22,9 +22,9 @@ public class CacheMemory {
             }
         }
 
-        addresses[nextIndext] = address;
-        values[nextIndext] = data;
-        nextIndext = (nextIndext + 1) % size;
+        addresses[nextIndex] = address;
+        values[nextIndex] = data;
+        nextIndex = (nextIndex + 1) % size;
     }
 
     public byte read(int address) {
