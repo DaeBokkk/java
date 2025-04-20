@@ -1,1 +1,1 @@
-# java
+# MainSystem.java에서 실행가능합니다.
